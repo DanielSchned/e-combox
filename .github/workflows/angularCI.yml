@@ -43,10 +43,10 @@ jobs:
         run: docker build . --file dockerfile --tag test-integration-github
       
       - name: docker login
-        run: docker login docker.io -u ${{ secrets.ACCES_ECOMBOX_DOCKER_LGN }} --password ${{ secrets.ACCES_ECOMBOX_DOCKER_PWD }}
+        run: docker login docker.io -u ${{ secrets.DOCKER_USERNAME }} --password ${{ secrets.DOCKER_PASSWORD }}
       - name: docker push
         run: |
-          IMAGE_ID=dschneider2/test-integration-github
+          IMAGE_ID=dockerschneider2a/test-integration-github
           # Strip git ref prefix from version
           VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
           # Strip "v" prefix from tag name
